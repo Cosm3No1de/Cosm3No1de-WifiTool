@@ -1,65 +1,77 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cosm3no1de | WiFi Tool - Auditoría de Red</title>
-    <!-- Carga de Tailwind CSS para la estructura y clases de utilidad --><script src="https://cdn.tailwindcss.com"></script>
-    <!-- Configuración del font Inter (base) y estilos personalizados --><style>
+    <title>Cosm3no1de | WiFi Tool - Auditoría de Red Profesional</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
         @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
-        
+
         /* Aplica el estilo Monospace y el fondo Cyberpunk a toda la página */
         body {
             font-family: 'Space Mono', monospace;
-            background-color: #0d1117; /* Fondo oscuro casi negro */
-            color: #E2E8F0; /* Texto gris claro */
+            background-color: #0d1117;
+            /* Fondo oscuro casi negro */
+            color: #E2E8F0;
+            /* Texto gris claro */
             overflow-x: hidden;
             line-height: 1.6;
         }
 
-        /* Estilo para el efecto de brillo neón en títulos y acentos */
-        .neon-glow {
-            text-shadow: 0 0 5px rgba(52, 211, 153, 0.5), 0 0 10px rgba(52, 211, 153, 0.8), 0 0 15px rgba(52, 211, 153, 0.4);
-            color: #34d399; /* Neon Green */
+        /* Estilo para el efecto de brillo neón en títulos y acentos (Cian como primario) */
+        .neon-glow-cyan {
+            text-shadow: 0 0 5px rgba(34, 211, 238, 0.5), 0 0 10px rgba(34, 211, 238, 0.8), 0 0 15px rgba(34, 211, 238, 0.4);
+            color: #22d3ee;
+            /* Neon Cyan */
         }
-        
-        /* Estilo para los botones con efecto hacker/glitch */
+
+        /* Estilo para los botones con efecto de brillo (V1.0 - Lima) */
         .cta-button {
             transition: all 0.3s ease;
             box-shadow: 0 0 10px rgba(52, 211, 153, 0.6);
         }
+
         .cta-button:hover {
             box-shadow: 0 0 15px rgba(52, 211, 153, 0.8), 0 0 30px rgba(52, 211, 153, 0.4);
             transform: translateY(-2px);
         }
 
-        /* Efecto de Scanlines (opcional para un toque retro) */
+        /* Efecto de Scanlines mejorado para el fondo */
         .scanline-bg {
             position: relative;
         }
+
         .scanline-bg::before {
             content: '';
-            position: absolute;
+            position: fixed;
+            /* Fijo para que no se mueva al hacer scroll */
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             pointer-events: none;
-            background: linear-gradient(rgba(13, 17, 23, 0.1) 50%, rgba(52, 211, 153, 0.1) 50%), linear-gradient(90deg, rgba(13, 17, 23, 0.1) 50%, rgba(52, 211, 153, 0.05) 50%);
-            background-size: 100% 4px, 4px 100%;
+            /* Patrón de líneas horizontales y verticales sutiles */
+            background: repeating-linear-gradient(0deg, #0d1117, #0d1117 1px, transparent 1px, transparent 2px),
+                repeating-linear-gradient(90deg, #0d1117, #0d1117 1px, transparent 1px, transparent 2px);
             opacity: 0.1;
-            z-index: 0;
+            z-index: -1;
+            /* Asegura que esté detrás del contenido */
         }
 
         /* Contenedor responsivo para el video de YouTube */
         .video-container {
             position: relative;
-            padding-bottom: 56.25%; /* 16:9 Aspect Ratio (9 / 16 * 100) */
+            /* Se mantiene 16:9 aunque sea un Short, ya que Shorts se adaptan al iframe */
+            padding-bottom: 56.25%;
             height: 0;
             overflow: hidden;
             max-width: 100%;
             background: #000;
         }
+
         .video-container iframe {
             position: absolute;
             top: 0;
@@ -69,104 +81,137 @@
         }
     </style>
 </head>
+
 <body class="scanline-bg">
 
-    <!-- Sección Principal (Héroe) --><header class="relative overflow-hidden pt-16 pb-24 lg:pt-32 lg:pb-40 border-b border-lime-400/20">
+    <header class="relative overflow-hidden pt-16 pb-24 lg:pt-32 lg:pb-40 border-b border-cyan-400/20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-            <!-- Título Principal con Efecto Neón --><h1 class="text-6xl sm:text-7xl lg:text-8xl font-extrabold tracking-tight mb-4">
-                <span class="neon-glow">Cosm3no1de</span>
-                <span class="block text-cyan-400">WiFi Tool</span>
+
+            <h1 class="text-6xl sm:text-7xl lg:text-8xl font-extrabold tracking-tight mb-4">
+                <span class="neon-glow-cyan">Cosm3no1de</span>
+                <span class="block text-lime-400">WiFi Tool</span>
             </h1>
 
-            <!-- Nuevo div para el Logo --><div class="mt-8 mb-12 mx-auto max-w-xs">
-                <img src="assets/logo.png" alt="Logo de Cosm3no1de WiFi Tool" class="w-full h-auto rounded-full shadow-lg shadow-red-500/50 border-2 border-red-400/70 transition duration-500 hover:scale-[1.02]">
+            <h2 class="text-3xl sm:text-4xl text-gray-300 font-normal mb-8 neon-glow-cyan">
+                // SEGURIDAD PERIMETRAL v2.0 _ OPTIMIZADA
+            </h2>
+
+            <div class="mt-8 mb-12 mx-auto max-w-xs">
+                <img src="assets/logo.png" alt="Logo de Cosm3no1de WiFi Tool"
+                    class="w-full h-auto rounded-full shadow-2xl shadow-red-500/70 border-4 border-red-400 transition duration-500 hover:scale-[1.03]">
             </div>
-            <!-- Fin del div para el Logo --><p class="mt-4 text-xl sm:text-2xl text-gray-400 max-w-3xl mx-auto border border-gray-700/50 p-4 rounded-lg bg-gray-800/50">
+            <p
+                class="mt-4 text-xl sm:text-2xl text-gray-400 max-w-3xl mx-auto border-2 border-cyan-700/50 p-6 rounded-xl bg-gray-900/70 shadow-inner shadow-gray-700/50">
                 // DESCUBRE LOS SECRETOS DE TU RED.
                 <br>
                 Auditoría de activos y seguridad perimetral en la palma de tu mano.
             </p>
 
-            <!-- Botón de Llamada a la Acción (CTA) --><div class="mt-10">
-                <!-- ENLACE PÚBLICO DE DESCARGA DEL APK (Google Drive) --><a href="https://drive.google.com/file/d/138i3Q59_8DZokqS1pC82aDNXSEj-SWFQ/view" target="_blank" class="cta-button inline-flex items-center justify-center px-10 py-4 border border-transparent text-lg font-bold rounded-full text-gray-900 bg-lime-400 hover:bg-lime-300">
+            <div class="mt-12 flex flex-col items-center space-y-5">
+
+                <a href="https://drive.google.com/file/d/1dZp-nRmmwHhGG0ofpGrQEf4VPtgB8xwj/view?usp=drive_link"
+                    target="_blank" class="cta-button inline-flex items-center justify-center px-12 py-5 text-xl font-extrabold rounded-full 
+                          text-black bg-cyan-400 hover:bg-cyan-300 shadow-xl shadow-cyan-400/60 
+                          hover:shadow-cyan-400/90 transition duration-300 transform hover:scale-105">
+                    DESCARGAR APK (v2.0) 🔥
+                    <svg class="w-6 h-6 ml-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 10v6m0 0l-3-3m3 3l3-3"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M3 17v2a2 2 0 002 2h14a2 2 0 002-2v-2M5 10l7-7 7 7"></path>
+                    </svg>
+                </a>
+
+                <a href="https://drive.google.com/file/d/138i3Q59_8DZokqS1pC82aDNXSEj-SWFQ/view" target="_blank" class="cta-button inline-flex items-center justify-center px-8 py-3 text-base font-bold rounded-full 
+                          text-gray-900 bg-lime-400 hover:bg-lime-300 shadow-lg shadow-lime-400/40">
                     DESCARGAR APK (v1.0)
-                    <!-- Icono de descarga --><svg class="w-5 h-5 ml-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
                 </a>
             </div>
 
-            <!-- Contenedor del Video de YouTube --><div class="mt-16 mx-auto max-w-2xl video-container border-2 border-cyan-400/50 rounded-xl shadow-2xl shadow-cyan-500/30 transition duration-500 hover:scale-[1.01]">
-                <!-- ¡VIDEO DE YOUTUBE INSERTADO! --><iframe 
-                    src="https://www.youtube.com/embed/26YV_DVzm5A?autoplay=0&controls=1&mute=0&loop=1" 
-                    frameborder="0" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowfullscreen
-                    title="Demostración de Cosm3no1de WiFi Tool"
-                ></iframe>
+            <div
+                class="mt-20 mx-auto max-w-3xl video-container border-4 border-cyan-400/80 rounded-xl shadow-2xl shadow-cyan-500/50 transition duration-500 hover:scale-[1.01]">
+                <iframe src="https://www.youtube.com/embed/MCokj6vx0DM?autoplay=0&controls=1&mute=0&loop=1"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen title="Demostración de Cosm3no1de WiFi Tool - Short"></iframe>
             </div>
         </div>
     </header>
 
-    <!-- Sección de Funcionalidades --><section class="py-20 lg:py-28">
+    <section class="py-20 lg:py-28">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-4xl sm:text-5xl font-bold text-center mb-16 text-cyan-400 neon-glow">
+            <h2 class="text-4xl sm:text-5xl font-bold text-center mb-16 text-cyan-400 neon-glow-cyan">
                 [ FUNCIONALIDADES _ CORE ]
             </h2>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
 
-                <!-- Característica 1: Descubrimiento de Hosts --><div class="p-6 bg-gray-800 rounded-xl border border-lime-400/20 shadow-lg hover:shadow-lime-400/30 transition duration-300">
-                    <div class="text-3xl neon-glow mb-4">// 01</div>
-                    <h3 class="text-2xl font-bold text-lime-400 mb-3">Escaneo Rápido de Activos</h3>
-                    <p class="text-gray-400">
-                        Descubre todos los dispositivos conectados a tu LAN (Local Area Network). Obtén IP, MAC y el estado de actividad en tiempo real.
+                <div
+                    class="p-8 bg-gray-800 rounded-2xl border-2 border-lime-400/50 shadow-xl hover:shadow-lime-400/50 transition duration-300 transform hover:translate-y-[-4px]">
+                    <div class="text-4xl text-lime-400 mb-4 font-bold">// 01-SCAN</div>
+                    <h3 class="text-2xl font-bold text-lime-400 mb-3">Escaneo Rápido de Activos (Isolates)</h3>
+                    <p class="text-gray-300">
+                        Descubre todos los dispositivos conectados a tu LAN (Local Area Network) sin bloquear la
+                        interfaz. Obtén IP, MAC y el estado de actividad.
                     </p>
                 </div>
 
-                <!-- Característica 2: Escáner de Puertos --><div class="p-6 bg-gray-800 rounded-xl border border-cyan-400/20 shadow-lg hover:shadow-cyan-400/30 transition duration-300">
-                    <div class="text-3xl neon-glow mb-4">// 02</div>
-                    <h3 class="text-2xl font-bold text-cyan-400 mb-3">Auditoría de Puertos TCP</h3>
-                    <p class="text-gray-400">
-                        Identifica puertos abiertos en cualquier host de la red. Esencial para la detección de servicios y la verificación de reglas de firewall.
+                <div
+                    class="p-8 bg-gray-800 rounded-2xl border-2 border-cyan-400/50 shadow-xl hover:shadow-cyan-400/50 transition duration-300 transform hover:translate-y-[-4px]">
+                    <div class="text-4xl text-cyan-400 mb-4 font-bold">// 02-AUDIT</div>
+                    <h3 class="text-2xl font-bold text-cyan-400 mb-3">Auditoría de Puertos TCP/UDP</h3>
+                    <p class="text-gray-300">
+                        Identifica puertos abiertos y servicios expuestos en cualquier host. Esencial para la detección
+                        de vulnerabilidades y la verificación de reglas de firewall.
                     </p>
                 </div>
 
-                <!-- Característica 3: Mapeo OUI/Fabricante --><div class="p-6 bg-gray-800 rounded-xl border border-lime-400/20 shadow-lg hover:shadow-lime-400/30 transition duration-300">
-                    <div class="text-3xl neon-glow mb-4">// 03</div>
+                <div
+                    class="p-8 bg-gray-800 rounded-2xl border-2 border-lime-400/50 shadow-xl hover:shadow-lime-400/50 transition duration-300 transform hover:translate-y-[-4px]">
+                    <div class="text-4xl text-lime-400 mb-4 font-bold">// 03-FPRINT</div>
                     <h3 class="text-2xl font-bold text-lime-400 mb-3">Mapeo OUI & Fingerprinting</h3>
-                    <p class="text-gray-400">
-                        Traduce las direcciones MAC a nombres de fabricantes (OUI), permitiendo un inventario de hardware más eficiente y profesional.
+                    <p class="text-gray-300">
+                        Traduce las direcciones MAC a nombres de fabricantes (OUI) utilizando un mapeo robusto. Permite
+                        un inventario de hardware eficiente y profesional.
                     </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Sección de Capturas de Pantalla (Previsualización) --><section class="py-20 lg:py-28 bg-gray-900 border-t border-b border-gray-700/50">
+    <section class="py-20 lg:py-28 bg-gray-900 border-t-4 border-b-4 border-cyan-400/20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 class="text-4xl sm:text-5xl font-bold text-center mb-16 text-lime-400 neon-glow">
-                [ PREVIEW _ SCAN ]
+                [ PREVIEW _ UI ]
             </h2>
 
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-8">
-                <!-- Captura 1: Escaneo de Hosts --><div class="bg-gray-800 p-3 rounded-xl border border-gray-700 hover:border-lime-400/50 transition duration-300">
-                    <img src="assets/screenshot1.jpg" alt="Captura de Escaneo de Hosts" class="rounded-lg w-full h-auto shadow-xl">
-                    <p class="text-center text-gray-500 mt-2 text-sm">// 01-Hosts-Discovered</p>
-                </div>
-                
-                <!-- Captura 2: Información WiFi --><div class="bg-gray-800 p-3 rounded-xl border border-gray-700 hover:border-cyan-400/50 transition duration-300">
-                    <img src="assets/screenshot2.jpg" alt="Captura de Información WiFi" class="rounded-lg w-full h-auto shadow-xl">
-                    <p class="text-center text-gray-500 mt-2 text-sm">// 02-Network-Details</p>
+                <div
+                    class="bg-gray-800 p-3 rounded-xl border-2 border-gray-700 hover:border-lime-400/50 transition duration-300 shadow-2xl shadow-gray-900/50">
+                    <img src="assets/screenshot1.jpg" alt="Captura de Escaneo de Hosts"
+                        class="rounded-lg w-full h-auto shadow-xl">
+                    <p class="text-center text-gray-500 mt-2 text-sm font-bold">// 01-Hosts-Discovered</p>
                 </div>
 
-                <!-- Captura 3: Escaneo de Puertos --><div class="bg-gray-800 p-3 rounded-xl border border-gray-700 hover:border-lime-400/50 transition duration-300">
-                    <img src="assets/screenshot3.jpg" alt="Captura de Escaneo de Puertos" class="rounded-lg w-full h-auto shadow-xl">
-                    <p class="text-center text-gray-500 mt-2 text-sm">// 03-Port-Audit</p>
+                <div
+                    class="bg-gray-800 p-3 rounded-xl border-2 border-gray-700 hover:border-cyan-400/50 transition duration-300 shadow-2xl shadow-gray-900/50">
+                    <img src="assets/screenshot2.jpg" alt="Captura de Información WiFi"
+                        class="rounded-lg w-full h-auto shadow-xl">
+                    <p class="text-center text-gray-500 mt-2 text-sm font-bold">// 02-Network-Details</p>
+                </div>
+
+                <div
+                    class="bg-gray-800 p-3 rounded-xl border-2 border-gray-700 hover:border-lime-400/50 transition duration-300 shadow-2xl shadow-gray-900/50">
+                    <img src="assets/screenshot3.jpg" alt="Captura de Escaneo de Puertos"
+                        class="rounded-lg w-full h-auto shadow-xl">
+                    <p class="text-center text-gray-500 mt-2 text-sm font-bold">// 03-Port-Audit</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Pie de Página (Footer) --><footer class="py-12 text-center text-gray-500 text-sm">
+    <footer class="py-12 text-center text-gray-500 text-sm">
         <p>
             &copy; 2025 Cosm3no1de WiFi Tool. Todos los derechos reservados.
             <br>
@@ -175,9 +220,11 @@
         <div class="mt-4">
             <a href="TU_ENLACE_AL_HILO_DE_XDA" class="text-cyan-400 hover:text-cyan-300 mx-2">// Soporte XDA</a>
             <span class="text-gray-700">|</span>
-            <a href="https://github.com/TU_USUARIO/TU_REPOSITORIO_DE_LA_PAGINA" class="text-lime-400 hover:text-lime-300 mx-2">// Repositorio Landing</a>
+            <a href="https://github.com/TU_USUARIO/TU_REPOSITORIO_DE_LA_PAGINA"
+                class="text-lime-400 hover:text-lime-300 mx-2">// Repositorio Landing</a>
         </div>
     </footer>
 
 </body>
+
 </html>
