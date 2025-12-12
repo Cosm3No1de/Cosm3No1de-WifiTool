@@ -3,273 +3,221 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cosm3no1de | WiFi Tool - Auditoría de Red Profesional</title>
+    <title>Cosm3no1de | Cybersecurity Suite</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
     
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        brand: {
+                            dark: '#0B0E14',
+                            card: '#151A23',
+                            accent: '#00DC82', /* Verde Ciberseguridad moderno */
+                            primary: '#3B82F6',
+                        }
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    }
+                }
+            }
+        }
+    </script>
+
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
-        
-        /* --- BASE STYLES --- */
         body {
-            font-family: 'Space Mono', monospace;
-            background-color: #0f172a; /* Slate 900 */
-            color: #e2e8f0;
-            overflow-x: hidden;
-            line-height: 1.6;
-            /* Fondo tecnológico sutil */
+            background-color: #0B0E14;
+            color: #E2E8F0;
             background-image: 
-                linear-gradient(rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.9)),
-                url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2322d3ee' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+                radial-gradient(circle at 50% 0%, rgba(59, 130, 246, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 50%, rgba(0, 220, 130, 0.05) 0%, transparent 40%);
         }
 
-        /* --- TYPOGRAPHY --- */
-        .gradient-text {
-            background-clip: text;
+        /* Glassmorphism Pro - Más oscuro y limpio */
+        .glass-card {
+            background: rgba(21, 26, 35, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2), 0 8px 20px -6px rgba(0, 0, 0, 0.3);
+        }
+
+        .glass-card:hover {
+            border-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+            transition: all 0.3s ease;
+        }
+
+        /* Botón Principal V3 - Estilo "Glow" */
+        .btn-glow {
+            position: relative;
+            background: linear-gradient(180deg, #374151 0%, #111827 100%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-glow::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: 0.5s;
+        }
+
+        .btn-glow:hover::before {
+            left: 100%;
+        }
+
+        .btn-glow:hover {
+            border-color: #00DC82;
+            box-shadow: 0 0 20px rgba(0, 220, 130, 0.2);
+        }
+
+        /* Animación sutil de texto */
+        .text-gradient {
+            background: linear-gradient(to right, #ffffff, #94a3b8);
             -webkit-background-clip: text;
-            color: transparent;
-            background-image: linear-gradient(to right, #22d3ee, #2dd4bf);
-            text-shadow: 0 0 30px rgba(34, 211, 238, 0.3);
+            -webkit-text-fill-color: transparent;
         }
-
-        /* --- GLASS PANELS --- */
-        .glass-panel {
-            background: rgba(30, 41, 59, 0.7);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
-            transition: all 0.3s ease;
-        }
-
-        .glass-panel:hover {
-            transform: translateY(-5px);
-            border-color: rgba(34, 211, 238, 0.3);
-            box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.3);
-        }
-
-        /* --- NUEVOS BOTONES MEJORADOS --- */
-
-        /* 1. V3.0 Super Button (Primary) */
-        .btn-v3-super {
-            position: relative;
-            /* Gradiente más agresivo y vibrante */
-            background: linear-gradient(135deg, #ff6b00 0%, #ea580c 50%, #c2410c 100%);
-            color: white;
-            /* Sombra profunda para elevación 3D */
-            box-shadow: 0 10px 20px -10px rgba(234, 88, 12, 0.5), 
-                        0 0 0 2px rgba(255, 255, 255, 0.1) inset;
-            border: none;
-            overflow: hidden; /* Necesario para el efecto de brillo */
-            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-        }
-
-        /* Efecto de "Barrido de luz" (Shine Sweep) */
-        .btn-v3-super::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%; /* Empieza fuera a la izquierda */
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
-            transition: 0.6s;
-            transform: skewX(-25deg);
-        }
-
-        .btn-v3-super:hover {
-            transform: translateY(-5px) scale(1.03);
-            box-shadow: 0 20px 40px -10px rgba(234, 88, 12, 0.7);
-        }
-
-        /* Dispara el barrido de luz al hacer hover */
-        .btn-v3-super:hover::before {
-            left: 150%; /* Se mueve hacia la derecha */
-        }
-
-
-        /* 2. V2.0 Glass Button (Secondary) */
-        .btn-v2-glass {
-            position: relative;
-            /* Fondo semitransparente estilo cristal */
-            background: rgba(34, 211, 238, 0.15);
-            backdrop-filter: blur(5px);
-            color: #22d3ee;
-            /* Borde sólido brillante */
-            border: 2px solid rgba(34, 211, 238, 0.8);
-            box-shadow: 0 0 15px rgba(34, 211, 238, 0.1);
-            transition: all 0.3s ease;
-            overflow: hidden;
-        }
-
-        .btn-v2-glass:hover {
-            background: rgba(34, 211, 238, 0.3); /* Se ilumina el interior */
-            box-shadow: 0 0 35px rgba(34, 211, 238, 0.5), inset 0 0 20px rgba(34, 211, 238, 0.2);
-            transform: translateY(-3px);
-            text-shadow: 0 0 8px rgba(34, 211, 238, 0.8);
-        }
-
-        /* 3. V1.0 Minimal Link (Tertiary) */
-        .btn-v1-minimal {
-            color: #94a3b8;
-            position: relative;
-            transition: all 0.3s;
-        }
-        .btn-v1-minimal::after {
-            content: '';
-            position: absolute;
-            width: 0%;
-            height: 1px;
-            bottom: -2px;
-            left: 0;
-            background-color: #a3e635;
-            transition: all 0.3s;
-        }
-        .btn-v1-minimal:hover {
-            color: #a3e635;
-            text-shadow: 0 0 10px rgba(163, 230, 53, 0.5);
-        }
-        .btn-v1-minimal:hover::after {
-            width: 100%;
-        }
-
-        /* --- UTILS --- */
-        .video-container {
-            position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
-            overflow: hidden;
-            background: #000;
-            border-radius: 1rem;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
-
-        .animate-blob { animation: blob 7s infinite; }
-        .animation-delay-2000 { animation-delay: 2s; }
-        @keyframes blob { 0% { transform: translate(0px, 0px) scale(1); } 33% { transform: translate(30px, -50px) scale(1.1); } 66% { transform: translate(-20px, 20px) scale(0.9); } 100% { transform: translate(0px, 0px) scale(1); } }
     </style>
 </head>
-<body>
+<body class="antialiased min-h-screen flex flex-col">
 
-    <header class="relative pt-20 pb-24 lg:pt-32 lg:pb-32 overflow-hidden">
-        <div class="absolute top-0 left-1/2 w-full -translate-x-1/2 h-full z-0 opacity-30 pointer-events-none">
-            <div class="absolute top-20 left-1/4 w-96 h-96 bg-cyan-500 rounded-full mix-blend-overlay filter blur-[100px] opacity-20 animate-blob"></div>
-            <div class="absolute bottom-20 right-1/4 w-96 h-96 bg-orange-500 rounded-full mix-blend-overlay filter blur-[100px] opacity-20 animate-blob animation-delay-2000"></div>
+    <nav class="fixed w-full z-50 top-0 border-b border-white/5 bg-[#0B0E14]/80 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <span class="font-mono text-brand-accent font-bold text-lg">&lt;COSM3 /&gt;</span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <span class="text-xs font-mono text-gray-500 uppercase tracking-widest">System Status: <span class="text-brand-accent">Online</span></span>
+                    </div>
+                </div>
+            </div>
         </div>
+    </nav>
 
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+    <main class="flex-grow pt-28 pb-16 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto w-full">
+        
+        <div class="text-center mb-16">
             
-            <div class="mb-8 mx-auto w-36 h-36 relative group">
-                <div class="absolute inset-0 bg-gradient-to-r from-cyan-500 to-orange-500 rounded-full blur-xl opacity-20 group-hover:opacity-50 transition duration-500 animate-pulse"></div>
-                <img src="assets/logo.png" alt="Logo" class="relative w-full h-full object-cover rounded-full border-4 border-slate-800/80 shadow-2xl z-10 transition transform group-hover:scale-105">
-            </div>
+            <a href="https://linktr.ee/cosmenoide" target="_blank" class="inline-block group relative mb-8">
+                <div class="absolute inset-0 bg-brand-accent blur-3xl opacity-20 group-hover:opacity-40 transition-opacity duration-500 rounded-full"></div>
+                <img src="assets/logo.png" alt="Cosm3no1de Logo" 
+                     class="relative w-28 h-28 rounded-2xl border border-white/10 shadow-2xl group-hover:scale-105 transition-transform duration-300 object-cover bg-black">
+                <div class="absolute -bottom-2 -right-2 bg-brand-card border border-white/10 p-1.5 rounded-full shadow-lg">
+                    <svg class="w-4 h-4 text-brand-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path></svg>
+                </div>
+            </a>
 
-            <h1 class="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight mb-6 leading-tight">
-                <span class="gradient-text">Cosm3no1de</span>
-                <span class="block text-slate-100 mt-2">WiFi Tool</span>
+            <h1 class="text-5xl sm:text-7xl font-bold tracking-tight mb-4">
+                <span class="text-gradient">Auditoría WiFi</span>
+                <span class="block text-brand-primary mt-2">Nivel Profesional</span>
             </h1>
-            
-            <div class="inline-flex items-center px-4 py-2 rounded-full border border-orange-500/40 bg-orange-900/20 text-orange-400 text-sm font-bold mb-10 tracking-widest shadow-[0_0_15px_rgba(234,88,12,0.2)]">
-                <span class="relative flex h-3 w-3 mr-3">
-                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
-                  <span class="relative inline-flex rounded-full h-3 w-3 bg-orange-500"></span>
-                </span>
-                LATEST RELEASE V3.0 AVAILABLE
-            </div>
 
-            <p class="text-lg sm:text-xl text-slate-400 max-w-2xl mx-auto mb-12 leading-relaxed">
-                Auditoría de activos y seguridad perimetral profesional.
-                <br class="hidden sm:block">
-                Descubre los secretos de tu red con herramientas de nivel industrial.
+            <p class="text-lg text-gray-400 max-w-2xl mx-auto mb-10 font-light leading-relaxed">
+                Herramienta avanzada para pentesting, fingerprinting y análisis de vulnerabilidades en redes locales. Diseñada para dispositivos Android.
             </p>
 
-            <div class="flex flex-col items-center justify-center space-y-6 w-full max-w-md mx-auto"> 
+            <div class="flex flex-col items-center gap-4 max-w-sm mx-auto w-full">
                 
                 <a href="https://www.mediafire.com/file/61e6khfi5zd2dn8/Cosm3WifiToolV3.O.apk/file" target="_blank" 
-                   class="btn-v3-super w-full flex items-center justify-center px-8 py-5 text-xl font-bold rounded-2xl group">
-                   <span class="mr-3 text-2xl">🚀</span>
-                   <span>DESCARGAR APK V3.0</span>
-                   <svg class="w-6 h-6 ml-3 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                   class="group relative w-full flex items-center justify-between p-1 rounded-xl bg-gradient-to-r from-brand-accent to-emerald-600 shadow-lg shadow-emerald-900/40 hover:shadow-emerald-500/30 transition-all duration-300 transform hover:-translate-y-1">
+                    <div class="w-full h-14 bg-[#0B0E14] rounded-[10px] flex items-center justify-between px-6 group-hover:bg-opacity-90 transition-all">
+                        <div class="flex flex-col items-start">
+                            <span class="text-[10px] font-mono font-bold text-brand-accent uppercase tracking-wider">Recomendado</span>
+                            <span class="font-bold text-white text-lg">Descargar v3.0</span>
+                        </div>
+                        <div class="bg-brand-accent/10 p-2 rounded-lg group-hover:bg-brand-accent group-hover:text-black transition-colors text-brand-accent">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                        </div>
+                    </div>
                 </a>
 
-                <a href="https://www.mediafire.com/file/rva6zw25231e3dv/Cosm3-WifiToolV2.apk/file" target="_blank" 
-                   class="btn-v2-glass w-full flex items-center justify-center px-8 py-4 text-lg font-bold rounded-xl">
-                   <span class="mr-3">🔥</span> Version 2.0 (Stable)
+                <a href="https://www.mediafire.com/file/rva6zw25231e3dv/Cosm3-WifiToolV2.apk/file" target="_blank"
+                   class="w-full flex items-center justify-between px-6 py-4 rounded-xl border border-white/5 hover:border-white/20 hover:bg-white/5 transition-all duration-300 group">
+                    <div class="flex flex-col items-start">
+                        <span class="text-gray-300 font-medium">Versión 2.0</span>
+                        <span class="text-[10px] text-gray-500 font-mono">Stable Release</span>
+                    </div>
+                    <span class="text-gray-600 group-hover:text-white transition-colors">↓</span>
                 </a>
-                
-                 <div class="pt-4">
-                    <a href="https://drive.google.com/file/d/138i3Q59_8DZokqS1pC82aDNXSEj-SWFQ/view" target="_blank" 
-                       class="btn-v1-minimal text-sm pb-1">
-                       ↓ Descargar versión legacy (v1.0)
-                    </a>
-                </div>
-            </div>
-            <div class="mt-24 mx-auto max-w-4xl video-container relative z-10">
-                <iframe 
-                    src="https://www.youtube.com/embed/MCokj6vx0DM?autoplay=0&controls=1&mute=0&loop=1" 
-                    frameborder="0" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowfullscreen
-                    title="Demo">
-                </iframe>
+
+                <a href="https://drive.google.com/file/d/138i3Q59_8DZokqS1pC82aDNXSEj-SWFQ/view" target="_blank" 
+                   class="mt-2 text-xs font-mono text-gray-600 hover:text-brand-accent transition-colors">
+                   Archivos Legacy (v1.0)
+                </a>
+
             </div>
         </div>
-    </header>
 
-    <section class="py-24 relative z-10">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-20">
-                <h2 class="text-3xl sm:text-4xl font-bold text-white inline-block relative">
-                    <span class="absolute -inset-1 blur-xl bg-gradient-to-r from-cyan-500 to-lime-500 opacity-30"></span>
-                    <span class="relative">Capacidades del Sistema</span>
-                </h2>
+        <div class="relative rounded-2xl border border-white/10 bg-[#151A23] p-2 shadow-2xl mx-auto max-w-4xl overflow-hidden mb-24">
+            <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-brand-primary/5 to-transparent pointer-events-none"></div>
+            <div class="flex items-center gap-2 px-4 py-3 border-b border-white/5 bg-[#0B0E14]">
+                <div class="w-3 h-3 rounded-full bg-red-500/20 border border-red-500/50"></div>
+                <div class="w-3 h-3 rounded-full bg-yellow-500/20 border border-yellow-500/50"></div>
+                <div class="w-3 h-3 rounded-full bg-green-500/20 border border-green-500/50"></div>
+                <div class="ml-4 px-3 py-1 bg-white/5 rounded text-[10px] font-mono text-gray-400 border border-white/5 flex-grow text-center">root@cosm3-tool:~/audit_mode</div>
             </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-                <div class="glass-panel p-8 rounded-2xl relative overflow-hidden group hover:border-lime-400/50">
-                    <div class="absolute -right-10 -top-10 w-32 h-32 bg-lime-500/10 rounded-full blur-2xl group-hover:bg-lime-500/30 transition-all"></div>
-                    <div class="text-sm font-mono font-bold text-lime-400 mb-4 tracking-wider">[ MODULE_01 ]</div>
-                    <h3 class="text-2xl font-bold text-slate-100 mb-4">Escaneo de Activos</h3>
-                    <p class="text-slate-400 leading-relaxed">
-                        Descubre dispositivos LAN mediante Isolates de alto rendimiento sin bloquear la UI. Obtén IP, MAC y estado en tiempo real.
-                    </p>
-                </div>
-
-                <div class="glass-panel p-8 rounded-2xl relative overflow-hidden group hover:border-cyan-400/50">
-                     <div class="absolute -right-10 -top-10 w-32 h-32 bg-cyan-500/10 rounded-full blur-2xl group-hover:bg-cyan-500/30 transition-all"></div>
-                    <div class="text-sm font-mono font-bold text-cyan-400 mb-4 tracking-wider">[ MODULE_02 ]</div>
-                    <h3 class="text-2xl font-bold text-slate-100 mb-4">Auditoría de Puertos</h3>
-                    <p class="text-slate-400 leading-relaxed">
-                        Análisis profundo TCP/UDP. Identifica vulnerabilidades y servicios expuestos para verificar reglas de firewall.
-                    </p>
-                </div>
-
-                <div class="glass-panel p-8 rounded-2xl relative overflow-hidden group hover:border-lime-400/50">
-                     <div class="absolute -right-10 -top-10 w-32 h-32 bg-lime-500/10 rounded-full blur-2xl group-hover:bg-lime-500/30 transition-all"></div>
-                    <div class="text-sm font-mono font-bold text-lime-400 mb-4 tracking-wider">[ MODULE_03 ]</div>
-                    <h3 class="text-2xl font-bold text-slate-100 mb-4">Fingerprinting OUI</h3>
-                    <p class="text-slate-400 leading-relaxed">
-                        Traducción automática de MAC Address a fabricantes. Inventario de hardware preciso con base de datos actualizada.
-                    </p>
-                </div>
+            <div class="relative aspect-video bg-black">
+                <iframe class="w-full h-full" src="https://www.youtube.com/embed/MCokj6vx0DM?autoplay=0&controls=1&mute=0&loop=1" title="Demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
         </div>
-    </section>
 
-    <footer class="py-12 text-center border-t border-slate-800/50 bg-slate-900/50 relative z-10">
-        <div class="max-w-7xl mx-auto px-4">
-            <p class="text-slate-500 text-sm mb-6 font-mono">
-                &copy; 2025 Cosm3no1de WiFi Tool. <br>
-                Designed by <span class="text-lime-400">Cosm3No1de</span>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-20">
+            <div class="glass-card p-6 rounded-2xl relative overflow-hidden group">
+                <div class="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity">
+                    <svg class="w-24 h-24 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" /></svg>
+                </div>
+                <h3 class="font-mono text-brand-accent text-sm mb-2">01_DISCOVERY</h3>
+                <h4 class="text-xl font-bold text-white mb-2">Escaneo de Activos</h4>
+                <p class="text-sm text-gray-400 leading-relaxed">Detección ultrarrápida de hosts en LAN utilizando isolates para evitar bloqueos de UI.</p>
+            </div>
+
+            <div class="glass-card p-6 rounded-2xl relative overflow-hidden group">
+                <div class="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity">
+                    <svg class="w-24 h-24 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>
+                </div>
+                <h3 class="font-mono text-brand-primary text-sm mb-2">02_SECURITY</h3>
+                <h4 class="text-xl font-bold text-white mb-2">Auditoría de Puertos</h4>
+                <p class="text-sm text-gray-400 leading-relaxed">Análisis profundo de puertos TCP/UDP abiertos y servicios expuestos vulnerables.</p>
+            </div>
+
+            <div class="glass-card p-6 rounded-2xl relative overflow-hidden group">
+                <div class="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity">
+                    <svg class="w-24 h-24 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>
+                </div>
+                <h3 class="font-mono text-purple-400 text-sm mb-2">03_IDENTIFICATION</h3>
+                <h4 class="text-xl font-bold text-white mb-2">MAC Fingerprint</h4>
+                <p class="text-sm text-gray-400 leading-relaxed">Base de datos OUI integrada para identificar fabricantes de hardware desconocidos.</p>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-4 opacity-80">
+            <img src="assets/screenshot1.jpg" class="rounded-lg border border-white/5 hover:opacity-100 transition-opacity" alt="App Screen">
+            <img src="assets/screenshot2.jpg" class="rounded-lg border border-white/5 hover:opacity-100 transition-opacity" alt="App Screen">
+            <img src="assets/screenshot3.jpg" class="rounded-lg border border-white/5 hover:opacity-100 transition-opacity hidden md:block" alt="App Screen">
+        </div>
+
+    </main>
+
+    <footer class="border-t border-white/5 bg-[#0B0E14] py-8 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p class="text-sm text-gray-600 font-mono">
+                &copy; 2025 Cosm3no1de Security. All systems operational.
             </p>
-            <div class="flex justify-center space-x-6">
-                <a href="#" class="text-slate-400 hover:text-cyan-400 transition-colors text-sm font-medium flex items-center group">
-                    <span class="group-hover:underline decoration-cyan-400 underline-offset-4">Soporte XDA</span>
-                </a>
-                <a href="#" class="text-slate-400 hover:text-lime-400 transition-colors text-sm font-medium flex items-center group">
-                    <span class="group-hover:underline decoration-lime-400 underline-offset-4">GitHub Repo</span>
-                </a>
-            </div>
         </div>
     </footer>
 
