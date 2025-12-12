@@ -12,14 +12,14 @@
         /* --- BASE STYLES --- */
         body {
             font-family: 'Space Mono', monospace;
-            background-color: #0f172a; /* Slate 900 - Más profesional que el negro puro */
+            background-color: #0f172a; /* Slate 900 */
             color: #e2e8f0;
             overflow-x: hidden;
             line-height: 1.6;
+            /* Fondo tecnológico sutil */
             background-image: 
-                radial-gradient(at 0% 0%, rgba(34, 211, 238, 0.15) 0px, transparent 50%),
-                radial-gradient(at 100% 0%, rgba(132, 204, 22, 0.1) 0px, transparent 50%);
-            background-attachment: fixed;
+                linear-gradient(rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.9)),
+                url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2322d3ee' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
         }
 
         /* --- TYPOGRAPHY --- */
@@ -27,70 +27,108 @@
             background-clip: text;
             -webkit-background-clip: text;
             color: transparent;
-            background-image: linear-gradient(to right, #22d3ee, #2dd4bf); /* Cyan gradient */
-        }
-        
-        .gradient-text-lime {
-            background-clip: text;
-            -webkit-background-clip: text;
-            color: transparent;
-            background-image: linear-gradient(to right, #a3e635, #bef264); /* Lime gradient */
+            background-image: linear-gradient(to right, #22d3ee, #2dd4bf);
+            text-shadow: 0 0 30px rgba(34, 211, 238, 0.3);
         }
 
-        /* --- GLASSMORPHISM CARDS --- */
+        /* --- GLASS PANELS --- */
         .glass-panel {
-            background: rgba(30, 41, 59, 0.6); /* Slate 800 con transparencia */
+            background: rgba(30, 41, 59, 0.7);
             backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
         }
 
         .glass-panel:hover {
             transform: translateY(-5px);
             border-color: rgba(34, 211, 238, 0.3);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.3);
         }
 
-        /* --- BUTTONS --- */
-        /* Primary (V3.0) - Solid Gradient */
-        .btn-primary {
-            background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+        /* --- NUEVOS BOTONES MEJORADOS --- */
+
+        /* 1. V3.0 Super Button (Primary) */
+        .btn-v3-super {
+            position: relative;
+            /* Gradiente más agresivo y vibrante */
+            background: linear-gradient(135deg, #ff6b00 0%, #ea580c 50%, #c2410c 100%);
             color: white;
-            box-shadow: 0 0 20px rgba(234, 88, 12, 0.4);
-            border: 1px solid rgba(255,255,255,0.1);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .btn-primary:hover {
-            box-shadow: 0 0 30px rgba(234, 88, 12, 0.6);
-            transform: scale(1.02);
-            filter: brightness(1.1);
+            /* Sombra profunda para elevación 3D */
+            box-shadow: 0 10px 20px -10px rgba(234, 88, 12, 0.5), 
+                        0 0 0 2px rgba(255, 255, 255, 0.1) inset;
+            border: none;
+            overflow: hidden; /* Necesario para el efecto de brillo */
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
         }
 
-        /* Secondary (V2.0) - Outline Style */
-        .btn-secondary {
-            background: rgba(34, 211, 238, 0.1);
+        /* Efecto de "Barrido de luz" (Shine Sweep) */
+        .btn-v3-super::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%; /* Empieza fuera a la izquierda */
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+            transition: 0.6s;
+            transform: skewX(-25deg);
+        }
+
+        .btn-v3-super:hover {
+            transform: translateY(-5px) scale(1.03);
+            box-shadow: 0 20px 40px -10px rgba(234, 88, 12, 0.7);
+        }
+
+        /* Dispara el barrido de luz al hacer hover */
+        .btn-v3-super:hover::before {
+            left: 150%; /* Se mueve hacia la derecha */
+        }
+
+
+        /* 2. V2.0 Glass Button (Secondary) */
+        .btn-v2-glass {
+            position: relative;
+            /* Fondo semitransparente estilo cristal */
+            background: rgba(34, 211, 238, 0.15);
+            backdrop-filter: blur(5px);
             color: #22d3ee;
-            border: 1px solid rgba(34, 211, 238, 0.3);
+            /* Borde sólido brillante */
+            border: 2px solid rgba(34, 211, 238, 0.8);
+            box-shadow: 0 0 15px rgba(34, 211, 238, 0.1);
             transition: all 0.3s ease;
-        }
-        .btn-secondary:hover {
-            background: rgba(34, 211, 238, 0.2);
-            border-color: #22d3ee;
-            box-shadow: 0 0 15px rgba(34, 211, 238, 0.2);
+            overflow: hidden;
         }
 
-        /* Tertiary (V1.0) - Minimal */
-        .btn-tertiary {
-            color: #94a3b8;
-            border: 1px solid rgba(148, 163, 184, 0.2);
-            background: transparent;
-            transition: all 0.3s ease;
+        .btn-v2-glass:hover {
+            background: rgba(34, 211, 238, 0.3); /* Se ilumina el interior */
+            box-shadow: 0 0 35px rgba(34, 211, 238, 0.5), inset 0 0 20px rgba(34, 211, 238, 0.2);
+            transform: translateY(-3px);
+            text-shadow: 0 0 8px rgba(34, 211, 238, 0.8);
         }
-        .btn-tertiary:hover {
+
+        /* 3. V1.0 Minimal Link (Tertiary) */
+        .btn-v1-minimal {
+            color: #94a3b8;
+            position: relative;
+            transition: all 0.3s;
+        }
+        .btn-v1-minimal::after {
+            content: '';
+            position: absolute;
+            width: 0%;
+            height: 1px;
+            bottom: -2px;
+            left: 0;
+            background-color: #a3e635;
+            transition: all 0.3s;
+        }
+        .btn-v1-minimal:hover {
             color: #a3e635;
-            border-color: #a3e635;
+            text-shadow: 0 0 10px rgba(163, 230, 53, 0.5);
+        }
+        .btn-v1-minimal:hover::after {
+            width: 100%;
         }
 
         /* --- UTILS --- */
@@ -104,45 +142,39 @@
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
             border: 1px solid rgba(255,255,255,0.1);
         }
-        .video-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
+        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
 
-        .img-preview {
-            transition: transform 0.3s ease;
-            border-radius: 0.75rem;
-        }
-        .glass-panel:hover .img-preview {
-            transform: scale(1.02);
-        }
+        .animate-blob { animation: blob 7s infinite; }
+        .animation-delay-2000 { animation-delay: 2s; }
+        @keyframes blob { 0% { transform: translate(0px, 0px) scale(1); } 33% { transform: translate(30px, -50px) scale(1.1); } 66% { transform: translate(-20px, 20px) scale(0.9); } 100% { transform: translate(0px, 0px) scale(1); } }
     </style>
 </head>
 <body>
 
     <header class="relative pt-20 pb-24 lg:pt-32 lg:pb-32 overflow-hidden">
         <div class="absolute top-0 left-1/2 w-full -translate-x-1/2 h-full z-0 opacity-30 pointer-events-none">
-            <div class="absolute top-20 left-1/4 w-72 h-72 bg-cyan-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
-            <div class="absolute top-20 right-1/4 w-72 h-72 bg-lime-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
+            <div class="absolute top-20 left-1/4 w-96 h-96 bg-cyan-500 rounded-full mix-blend-overlay filter blur-[100px] opacity-20 animate-blob"></div>
+            <div class="absolute bottom-20 right-1/4 w-96 h-96 bg-orange-500 rounded-full mix-blend-overlay filter blur-[100px] opacity-20 animate-blob animation-delay-2000"></div>
         </div>
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
             
-            <div class="mb-8 mx-auto w-32 h-32 relative group">
-                <div class="absolute inset-0 bg-gradient-to-r from-cyan-500 to-lime-500 rounded-full blur opacity-20 group-hover:opacity-40 transition duration-500"></div>
-                <img src="assets/logo.png" alt="Logo" class="relative w-full h-full object-cover rounded-full border-2 border-slate-700 shadow-2xl">
+            <div class="mb-8 mx-auto w-36 h-36 relative group">
+                <div class="absolute inset-0 bg-gradient-to-r from-cyan-500 to-orange-500 rounded-full blur-xl opacity-20 group-hover:opacity-50 transition duration-500 animate-pulse"></div>
+                <img src="assets/logo.png" alt="Logo" class="relative w-full h-full object-cover rounded-full border-4 border-slate-800/80 shadow-2xl z-10 transition transform group-hover:scale-105">
             </div>
 
-            <h1 class="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight mb-6">
+            <h1 class="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight mb-6 leading-tight">
                 <span class="gradient-text">Cosm3no1de</span>
                 <span class="block text-slate-100 mt-2">WiFi Tool</span>
             </h1>
             
-            <div class="inline-block px-4 py-1.5 rounded-full border border-orange-500/30 bg-orange-500/10 text-orange-400 text-sm font-bold mb-8 tracking-widest">
-                ● LATEST RELEASE V3.0
+            <div class="inline-flex items-center px-4 py-2 rounded-full border border-orange-500/40 bg-orange-900/20 text-orange-400 text-sm font-bold mb-10 tracking-widest shadow-[0_0_15px_rgba(234,88,12,0.2)]">
+                <span class="relative flex h-3 w-3 mr-3">
+                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
+                  <span class="relative inline-flex rounded-full h-3 w-3 bg-orange-500"></span>
+                </span>
+                LATEST RELEASE V3.0 AVAILABLE
             </div>
 
             <p class="text-lg sm:text-xl text-slate-400 max-w-2xl mx-auto mb-12 leading-relaxed">
@@ -151,28 +183,28 @@
                 Descubre los secretos de tu red con herramientas de nivel industrial.
             </p>
 
-            <div class="flex flex-col items-center justify-center space-y-4 sm:space-y-0 sm:flex-row sm:space-x-6"> 
+            <div class="flex flex-col items-center justify-center space-y-6 w-full max-w-md mx-auto"> 
                 
                 <a href="https://www.mediafire.com/file/61e6khfi5zd2dn8/Cosm3WifiToolV3.O.apk/file" target="_blank" 
-                   class="btn-primary w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 text-lg font-bold rounded-xl">
-                   <span>DESCARGAR v3.0</span>
-                   <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                   class="btn-v3-super w-full flex items-center justify-center px-8 py-5 text-xl font-bold rounded-2xl group">
+                   <span class="mr-3 text-2xl">🚀</span>
+                   <span>DESCARGAR APK V3.0</span>
+                   <svg class="w-6 h-6 ml-3 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
                 </a>
 
                 <a href="https://www.mediafire.com/file/rva6zw25231e3dv/Cosm3-WifiToolV2.apk/file" target="_blank" 
-                   class="btn-secondary w-full sm:w-auto inline-flex items-center justify-center px-6 py-4 text-lg font-medium rounded-xl">
-                   Versión 2.0
+                   class="btn-v2-glass w-full flex items-center justify-center px-8 py-4 text-lg font-bold rounded-xl">
+                   <span class="mr-3">🔥</span> Version 2.0 (Stable)
                 </a>
+                
+                 <div class="pt-4">
+                    <a href="https://drive.google.com/file/d/138i3Q59_8DZokqS1pC82aDNXSEj-SWFQ/view" target="_blank" 
+                       class="btn-v1-minimal text-sm pb-1">
+                       ↓ Descargar versión legacy (v1.0)
+                    </a>
+                </div>
             </div>
-
-            <div class="mt-6">
-                <a href="https://drive.google.com/file/d/138i3Q59_8DZokqS1pC82aDNXSEj-SWFQ/view" target="_blank" 
-                   class="text-slate-500 hover:text-lime-400 text-sm transition-colors duration-300 border-b border-transparent hover:border-lime-400 pb-0.5">
-                   Buscas la versión legacy (v1.0)? Descárgala aquí
-                </a>
-            </div>
-
-            <div class="mt-20 mx-auto max-w-4xl video-container">
+            <div class="mt-24 mx-auto max-w-4xl video-container relative z-10">
                 <iframe 
                     src="https://www.youtube.com/embed/MCokj6vx0DM?autoplay=0&controls=1&mute=0&loop=1" 
                     frameborder="0" 
@@ -184,44 +216,39 @@
         </div>
     </header>
 
-    <section class="py-20 bg-slate-900/50">
+    <section class="py-24 relative z-10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl sm:text-4xl font-bold gradient-text inline-block pb-2 border-b border-cyan-500/30">
-                    Capacidades del Sistema
+            <div class="text-center mb-20">
+                <h2 class="text-3xl sm:text-4xl font-bold text-white inline-block relative">
+                    <span class="absolute -inset-1 blur-xl bg-gradient-to-r from-cyan-500 to-lime-500 opacity-30"></span>
+                    <span class="relative">Capacidades del Sistema</span>
                 </h2>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="glass-panel p-8 rounded-2xl relative overflow-hidden group">
-                    <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
-                        <svg class="w-24 h-24 text-lime-400" fill="currentColor" viewBox="0 0 20 20"><path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/><path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"/></svg>
-                    </div>
-                    <div class="text-sm font-bold text-lime-400 mb-2 tracking-wider">MODULE_01</div>
-                    <h3 class="text-xl font-bold text-slate-100 mb-3">Escaneo de Activos</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <div class="glass-panel p-8 rounded-2xl relative overflow-hidden group hover:border-lime-400/50">
+                    <div class="absolute -right-10 -top-10 w-32 h-32 bg-lime-500/10 rounded-full blur-2xl group-hover:bg-lime-500/30 transition-all"></div>
+                    <div class="text-sm font-mono font-bold text-lime-400 mb-4 tracking-wider">[ MODULE_01 ]</div>
+                    <h3 class="text-2xl font-bold text-slate-100 mb-4">Escaneo de Activos</h3>
+                    <p class="text-slate-400 leading-relaxed">
                         Descubre dispositivos LAN mediante Isolates de alto rendimiento sin bloquear la UI. Obtén IP, MAC y estado en tiempo real.
                     </p>
                 </div>
 
-                <div class="glass-panel p-8 rounded-2xl relative overflow-hidden group">
-                    <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
-                        <svg class="w-24 h-24 text-cyan-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
-                    </div>
-                    <div class="text-sm font-bold text-cyan-400 mb-2 tracking-wider">MODULE_02</div>
-                    <h3 class="text-xl font-bold text-slate-100 mb-3">Auditoría de Puertos</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed">
+                <div class="glass-panel p-8 rounded-2xl relative overflow-hidden group hover:border-cyan-400/50">
+                     <div class="absolute -right-10 -top-10 w-32 h-32 bg-cyan-500/10 rounded-full blur-2xl group-hover:bg-cyan-500/30 transition-all"></div>
+                    <div class="text-sm font-mono font-bold text-cyan-400 mb-4 tracking-wider">[ MODULE_02 ]</div>
+                    <h3 class="text-2xl font-bold text-slate-100 mb-4">Auditoría de Puertos</h3>
+                    <p class="text-slate-400 leading-relaxed">
                         Análisis profundo TCP/UDP. Identifica vulnerabilidades y servicios expuestos para verificar reglas de firewall.
                     </p>
                 </div>
 
-                <div class="glass-panel p-8 rounded-2xl relative overflow-hidden group">
-                    <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
-                        <svg class="w-24 h-24 text-lime-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M6 6V5a3 3 0 013-3h2.25a3 3 0 013 3v1h2a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h1zm5-1a1 1 0 100 2 1 1 0 000-2zM4 10v6h12v-6H4z" clip-rule="evenodd"/></svg>
-                    </div>
-                    <div class="text-sm font-bold text-lime-400 mb-2 tracking-wider">MODULE_03</div>
-                    <h3 class="text-xl font-bold text-slate-100 mb-3">Fingerprinting OUI</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed">
+                <div class="glass-panel p-8 rounded-2xl relative overflow-hidden group hover:border-lime-400/50">
+                     <div class="absolute -right-10 -top-10 w-32 h-32 bg-lime-500/10 rounded-full blur-2xl group-hover:bg-lime-500/30 transition-all"></div>
+                    <div class="text-sm font-mono font-bold text-lime-400 mb-4 tracking-wider">[ MODULE_03 ]</div>
+                    <h3 class="text-2xl font-bold text-slate-100 mb-4">Fingerprinting OUI</h3>
+                    <p class="text-slate-400 leading-relaxed">
                         Traducción automática de MAC Address a fabricantes. Inventario de hardware preciso con base de datos actualizada.
                     </p>
                 </div>
@@ -229,45 +256,18 @@
         </div>
     </section>
 
-    <section class="py-20 border-t border-slate-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl font-bold text-center mb-16 text-slate-200">
-                Interfaz de Usuario
-            </h2>
-
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-8">
-                <div class="glass-panel p-2 rounded-xl">
-                    <img src="assets/screenshot1.jpg" alt="Escaneo de Hosts" class="img-preview w-full h-auto shadow-lg">
-                    <p class="text-center text-slate-500 mt-4 text-xs font-bold tracking-widest uppercase">Discovery Mode</p>
-                </div>
-                
-                <div class="glass-panel p-2 rounded-xl">
-                    <img src="assets/screenshot2.jpg" alt="Info WiFi" class="img-preview w-full h-auto shadow-lg">
-                    <p class="text-center text-slate-500 mt-4 text-xs font-bold tracking-widest uppercase">Network Detail</p>
-                </div>
-
-                <div class="glass-panel p-2 rounded-xl">
-                    <img src="assets/screenshot3.jpg" alt="Puertos" class="img-preview w-full h-auto shadow-lg">
-                    <p class="text-center text-slate-500 mt-4 text-xs font-bold tracking-widest uppercase">Port Audit</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer class="py-12 text-center border-t border-slate-800 bg-slate-900">
+    <footer class="py-12 text-center border-t border-slate-800/50 bg-slate-900/50 relative z-10">
         <div class="max-w-7xl mx-auto px-4">
-            <p class="text-slate-500 text-sm mb-6">
+            <p class="text-slate-500 text-sm mb-6 font-mono">
                 &copy; 2025 Cosm3no1de WiFi Tool. <br>
                 Designed by <span class="text-lime-400">Cosm3No1de</span>
             </p>
             <div class="flex justify-center space-x-6">
-                <a href="#" class="text-slate-400 hover:text-cyan-400 transition-colors text-sm font-medium flex items-center">
-                    <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20"><path d="M2 5a2 2 0 012-2h12a2 2 0 012 2v10a2 2 0 01-2 2H4a2 2 0 01-2-2V5zm3.293 1.293a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 01-1.414-1.414L7.586 10 5.293 7.707a1 1 0 010-1.414zM11 12a1 1 0 100 2h3a1 1 0 100-2h-3z" clip-rule="evenodd"/></svg>
-                    Soporte XDA
+                <a href="#" class="text-slate-400 hover:text-cyan-400 transition-colors text-sm font-medium flex items-center group">
+                    <span class="group-hover:underline decoration-cyan-400 underline-offset-4">Soporte XDA</span>
                 </a>
-                <a href="https://github.com/TU_USUARIO/TU_REPOSITORIO" class="text-slate-400 hover:text-lime-400 transition-colors text-sm font-medium flex items-center">
-                    <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
-                    GitHub
+                <a href="#" class="text-slate-400 hover:text-lime-400 transition-colors text-sm font-medium flex items-center group">
+                    <span class="group-hover:underline decoration-lime-400 underline-offset-4">GitHub Repo</span>
                 </a>
             </div>
         </div>
